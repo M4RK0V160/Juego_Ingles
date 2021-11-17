@@ -64,13 +64,13 @@ class Stage:
 
     def display(self):
         SCREEN_MANAGER.display(self.name, (0,0), RESOLUTION)
-        SCREEN_MANAGER.display(tag, self.option_position[i], self.option_size)
+        SCREEN_MANAGER.display('options_square', self.option_position, self.option_size)
 #-------------------------------------------------------
 #
 #
 #
 #SETUP--------------------------------------------------
-event1 = Stage('happy_girl', 1 , [(600,700),(650,700),(600,750),(650,750)],(50,50))
+event1 = Stage('happy_girl', 1 , (600,700),(100,100))
 
 EVENT_DIC = {'event1': event1}
 EVENT_MANAGER = Event_Manager(EVENT_DIC)
