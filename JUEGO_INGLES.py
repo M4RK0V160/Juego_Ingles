@@ -65,12 +65,33 @@ class Stage:
     def display(self):
         SCREEN_MANAGER.display(self.name, (0,0), RESOLUTION)
         SCREEN_MANAGER.display('options_square', self.option_position, self.option_size)
+        
+        
+class Button:
+    def __init__(self, pos, size, bgcolor, trigger_tag):
+        self.x, self.y = pos
+        self.size = self.size
+        self.bgcolor = bgcolor
+        self.trigger_tag = trigger_tag
+        self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
+        self.surface = pygame.Surface(self.size)
+        self.surface.fill(self.bgcolor)
+        
+    def show(self):
+        SCREEN.blit(self.surface, (self.x, self.y))
+ 
+    def click(self, event):
+        x, y = pygame.mouse.get_pos()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if pygame.mouse.get_pressed()[0]:
+                if self.rect.collidepoint(x, y):
+                    self.show()
 #-------------------------------------------------------
 #
 #
 #
 #SETUP--------------------------------------------------
-event1 = Stage('happy_girl', 1 , (600,700),(100,100))
+event1 = Stage('happy_girl', 1 , (200,200),(100,100))
 
 EVENT_DIC = {'event1': event1}
 EVENT_MANAGER = Event_Manager(EVENT_DIC)
