@@ -28,6 +28,8 @@ class Event_Manager:
         self.stage_dic = stage_dic   
         
     def run_event(self, stage_tag):
+        for tag in STAGE_DIC[stage_tag].button_tag_list:
+            BUTTON_DIC[tag].next_stage = stage_tag
         BUTTON_DIC[STAGE_DIC[stage_tag].right_option].next_stage = STAGE_DIC[stage_tag].right_option_path
         STAGE_DIC[stage_tag].display()      
 #-------------------------------------------------------
@@ -101,15 +103,17 @@ happy_girl = Stage('happy_girl', True, 'button11','start_stage' , (400,300),(100
 
 
 start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
-button11 = Button((400,300),(150,150),(20,20,200),'happy_girl')
-button21 = Button((400,450),(150,150),(20,20,200),'happy_girl')
-button12 = Button((550,300),(150,150),(20,20,200),'happy_girl')
-button22 = Button((550,450),(150,150),(20,20,200),'happy_girl')
+
+
+button11 = Button((400,300),(170,150),(20,20,200),'happy_girl')
+button21 = Button((400,450),(170,160),(20,20,200),'happy_girl')
+button12 = Button((570,300),(170,150),(20,20,200),'happy_girl')
+button22 = Button((570,450),(170,160),(20,20,200),'happy_girl')
 
 
 ACTUAL_STAGE = 'start_stage'
 STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl }
-BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button11}
+BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button22}
 
 EVENT_MANAGER = Event_Manager(STAGE_DIC)
 clock = pygame.time.Clock()
