@@ -32,7 +32,7 @@ class Event_Manager:
         self.stage_dic = stage_dic   
         
     def run_event(self, stage_tag):
-        BUTTON_DIC[STAGE_DIC[stage_tag]].next_stage = 'start_stage'
+        BUTTON_DIC[STAGE_DIC[stage_tag].right_option].next_stage = STAGE_DIC[stage_tag].right_option_path
         STAGE_DIC[stage_tag].display()      
 #-------------------------------------------------------
 #
@@ -57,13 +57,14 @@ SCREEN_MANAGER= Screen_Manager(IMG_DIC)
 #
 #MULTY-INSTANCE CLASS DEFINITION------------------------
 class Stage:
-    def __init__(self, name, options_boolean, right_option, option_position, option_size, button_tag_list):
+    def __init__(self, name, options_boolean, right_option, right_option_path, option_position, option_size, button_tag_list):
         self.name = name
         self.options_boolean = options_boolean
         self.right_option = right_option
         self.option_position = option_position
         self.option_size = option_size
         self.button_tag_list = button_tag_list
+        self.right_option_path = right_option_path
         
 
     def display(self):
@@ -97,23 +98,22 @@ class Button:
 #
 #
 #SETUP--------------------------------------------------
-start_stage = Stage('start_stage', False, 1 , (0,0),(300,300), ['start_button'])
-happy_girl = Stage('happy_girl', True, 1 , (400,300),(100,100), ['happy_face','sad_face','angry_face','scared_face'])
+start_stage = Stage('start_stage', False, 'start_button','happy_girl', (0,0),(300,300), ['start_button'])
+happy_girl = Stage('happy_girl', True, 'button11','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
 
 
 
 
 start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
-
-happy_face = Button((400,300),(150,150),(20,20,200),'happy_girl')
-sad_face = Button((400,450),(150,150),(20,20,200),'happy_girl')
-angry_face = Button((550,300),(150,150),(20,20,200),'happy_girl')
-scared_face = Button((550,450),(150,150),(20,20,200),'happy_girl')
+button11 = Button((400,300),(150,150),(20,20,200),'happy_girl')
+button21 = Button((400,450),(150,150),(20,20,200),'happy_girl')
+button12 = Button((550,300),(150,150),(20,20,200),'happy_girl')
+button22 = Button((550,450),(150,150),(20,20,200),'happy_girl')
 
 
 ACTUAL_STAGE = 'start_stage'
 STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl }
-BUTTON_DIC = {'start_button':start_button,'happy_face':happy_face,'sad_face':sad_face,'angry_face':angry_face,'scared_face':happy_face}
+BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button11}
 
 EVENT_MANAGER = Event_Manager(STAGE_DIC)
 clock = pygame.time.Clock()
