@@ -70,7 +70,7 @@ class Stage:
 class Button:
     def __init__(self, pos, size, bgcolor, trigger_tag):
         self.x, self.y = pos
-        self.size = self.size
+        self.size = size
         self.bgcolor = bgcolor
         self.trigger_tag = trigger_tag
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
@@ -91,8 +91,8 @@ class Button:
 #
 #
 #SETUP--------------------------------------------------
-event1 = Stage('happy_girl', 1 , (100,100),(10,10))
-
+event1 = Stage('happy_girl', 1 , (0,0),(300,300))
+button1 = Button((100,100),(100,100),(20,20,200),'button1')
 EVENT_DIC = {'event1': event1}
 EVENT_MANAGER = Event_Manager(EVENT_DIC)
 
@@ -120,9 +120,9 @@ while MAIN:
                 sys.exit()
             finally:
                 MAIN = False
+        button1.click(event)
                 
     EVENT_MANAGER.run_event('event1')   
-     
     pygame.display.flip()  
     clock.tick(FPS)
 #-------------------------------------------------------
