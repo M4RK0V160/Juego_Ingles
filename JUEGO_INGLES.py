@@ -44,33 +44,38 @@ RESOLUTION = (800,700)
 FPS = 30
 MAIN = True
 
-IMG_DIC = {'happy_girl':'IMG1.png','options_square':'OPT_SQR.png'}
+
+IMG_DIC = {'happy_girl':'IMG1.png','options_square':'OPT_SQR.png', 'start_screen':'IMG2.png'}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
 SCREEN_MANAGER= Screen_Manager(IMG_DIC)
+
 #-------------------------------------------------------
 #
 #
 #
 #MULTY-INSTANCE CLASS DEFINITION------------------------
 class Stage:
-    def __init__(self, name, right_option, option_position, option_size):
+    def __init__(self, name, options_boolean, right_option, option_position, option_size, button_tag):
         self.name = name
+        self.options_boolean = options_boolean
         self.right_option = right_option
         self.option_position = option_position
         self.option_size = option_size
+        self.button = BUTTON_DIC[button_tag]
     
 
     def display(self):
         SCREEN_MANAGER.display(self.name, (0,0), RESOLUTION)
-        SCREEN_MANAGER.display('options_square', self.option_position, self.option_size)
+        if self.options_boolean:
+            SCREEN_MANAGER.display('options_square', self.option_position, self.option_size)
         
         
 class Button:
     def __init__(self, pos, size, bgcolor, trigger_tag):
         self.x, self.y = pos
-        self.size = self.size
+        self.size = size
         self.bgcolor = bgcolor
         self.trigger_tag = trigger_tag
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
@@ -91,9 +96,10 @@ class Button:
 #
 #
 #SETUP--------------------------------------------------
-event1 = Stage('happy_girl', 1 , (100,100),(10,10))
-
-EVENT_DIC = {'event1': event1}
+start_screen = Stage('start_screen', False, 1 , (0,0),(300,300))
+button1 = Button((100,100),(100,100),(20,20,200),'button1')
+EVENT_DIC = {'event1': start_screen}
+BUTTON_DIC = {'button1':button1}
 EVENT_MANAGER = Event_Manager(EVENT_DIC)
 
 clock = pygame.time.Clock()
@@ -104,6 +110,7 @@ pygame.init()
 #
 #MAIN LOOP----------------------------------------------
 while MAIN:
+    EVENT_MANAGER.run_event('event1') 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -120,9 +127,9 @@ while MAIN:
                 sys.exit()
             finally:
                 MAIN = False
+        button1.click(event)
                 
-    EVENT_MANAGER.run_event('event1')   
-     
+      
     pygame.display.flip()  
     clock.tick(FPS)
 #-------------------------------------------------------
