@@ -91,7 +91,7 @@ class Button:
 #
 #
 #SETUP--------------------------------------------------
-event1 = Stage('happy_girl', 1 , (200,200),(100,100))
+event1 = Stage('happy_girl', 1 , (100,100),(10,10))
 
 EVENT_DIC = {'event1': event1}
 EVENT_MANAGER = Event_Manager(EVENT_DIC)
