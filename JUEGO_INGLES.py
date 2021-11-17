@@ -44,7 +44,7 @@ RESOLUTION = (800,700)
 FPS = 30
 MAIN = True
 
-IMG_DIC = {'happy_girl':'IMG1.png','options_square':'OPT_SQR.png'}
+IMG_DIC = {'happy_girl':'IMG1.png','options_square':'OPT_SQR.png', 'start_screen':'IMG2.png'}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
