@@ -57,13 +57,13 @@ SCREEN_MANAGER= Screen_Manager(IMG_DIC)
 #
 #MULTY-INSTANCE CLASS DEFINITION------------------------
 class Stage:
-    def __init__(self, name, options_boolean, right_option, option_position, option_size, button_tag):
+    def __init__(self, name, options_boolean, right_option, option_position, option_size, button_tag_list):
         self.name = name
         self.options_boolean = options_boolean
         self.right_option = right_option
         self.option_position = option_position
         self.option_size = option_size
-        self.button = BUTTON_DIC[button_tag]
+        self.button_tag_list = button_tag_list
     
 
     def display(self):
@@ -96,21 +96,40 @@ class Button:
 #
 #
 #SETUP--------------------------------------------------
-start_screen = Stage('start_screen', False, 1 , (0,0),(300,300))
-button1 = Button((100,100),(100,100),(20,20,200),'button1')
-EVENT_DIC = {'event1': start_screen}
-BUTTON_DIC = {'button1':button1}
-EVENT_MANAGER = Event_Manager(EVENT_DIC)
+start_screen = Stage('start_screen', False, 1 , (0,0),(300,300), ['start_button'])
+happy_girl = Stage('happy_girl', True, 1 , (400,300),(100,100), ['happy_face'])
 
+
+
+
+start_button = Button((100,100),(100,100),(20,20,200),'start_button')
+
+happy_face = Button((400,300),(150,150),(20,20,200),'happy_face')
+
+ACTUAL_STAGE = 'happy_girl'
+EVENT_DIC = {'start_screen': start_screen,'happy_girl':happy_girl }
+BUTTON_DIC = {'start_button':start_button,'happy_face':happy_face}
+
+EVENT_MANAGER = Event_Manager(EVENT_DIC)
 clock = pygame.time.Clock()
 pygame.init()
 #-------------------------------------------------------
 #
 #
 #
+#AUXILIARY FUNCTIONS------------------------------------
+def button_tracker(stage, event):
+    for tag in EVENT_DIC[stage].button_tag_list:
+        BUTTON_DIC[tag].click(event)
+#-------------------------------------------------------
+#
+#
+#
 #MAIN LOOP----------------------------------------------
 while MAIN:
-    EVENT_MANAGER.run_event('event1') 
+    
+    EVENT_MANAGER.run_event(ACTUAL_STAGE) 
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -127,12 +146,15 @@ while MAIN:
                 sys.exit()
             finally:
                 MAIN = False
-        button1.click(event)
                 
-      
+    
+        button_tracker(ACTUAL_STAGE,event) 
+            
+    
     pygame.display.flip()  
     clock.tick(FPS)
 #-------------------------------------------------------
+
 
 
 
