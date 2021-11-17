@@ -1,5 +1,4 @@
 
-
 import math
 import random
 
@@ -32,8 +31,9 @@ class Event_Manager:
     def __init__(self, stage_dic):
         self.stage_dic = stage_dic   
         
-    def run_event(self, event_tag):
-        STAGE_DIC[event_tag].display()      
+    def run_event(self, stage_tag):
+        BUTTON_DIC[STAGE_DIC[stage_tag]].next_stage = 'start_stage'
+        STAGE_DIC[stage_tag].display()      
 #-------------------------------------------------------
 #
 #
@@ -45,7 +45,7 @@ FPS = 30
 MAIN = True
 
 
-IMG_DIC = {'happy_girl':'IMG1.png','options_square':'OPT_SQR.png', 'start_screen':'IMG2.png'}
+IMG_DIC = {'happy_girl':'IMG1.png','options_square':'OPT_SQR.png', 'start_stage':'IMG2.png'}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
@@ -64,7 +64,7 @@ class Stage:
         self.option_position = option_position
         self.option_size = option_size
         self.button_tag_list = button_tag_list
-    
+        
 
     def display(self):
         SCREEN_MANAGER.display(self.name, (0,0), RESOLUTION)
@@ -97,19 +97,23 @@ class Button:
 #
 #
 #SETUP--------------------------------------------------
-start_screen = Stage('start_screen', False, 1 , (0,0),(300,300), ['start_button'])
-happy_girl = Stage('happy_girl', True, 1 , (400,300),(100,100), ['happy_face'])
+start_stage = Stage('start_stage', False, 1 , (0,0),(300,300), ['start_button'])
+happy_girl = Stage('happy_girl', True, 1 , (400,300),(100,100), ['happy_face','sad_face','angry_face','scared_face'])
 
 
 
 
 start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
 
-happy_face = Button((400,300),(150,150),(20,20,200),'start_screen')
+happy_face = Button((400,300),(150,150),(20,20,200),'happy_girl')
+sad_face = Button((400,450),(150,150),(20,20,200),'happy_girl')
+angry_face = Button((550,300),(150,150),(20,20,200),'happy_girl')
+scared_face = Button((550,450),(150,150),(20,20,200),'happy_girl')
 
-ACTUAL_STAGE = 'start_screen'
-STAGE_DIC = {'start_screen': start_screen,'happy_girl':happy_girl }
-BUTTON_DIC = {'start_button':start_button,'happy_face':happy_face}
+
+ACTUAL_STAGE = 'start_stage'
+STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl }
+BUTTON_DIC = {'start_button':start_button,'happy_face':happy_face,'sad_face':sad_face,'angry_face':angry_face,'scared_face':happy_face}
 
 EVENT_MANAGER = Event_Manager(STAGE_DIC)
 clock = pygame.time.Clock()
@@ -126,6 +130,11 @@ def button_tracker(stage, event):
 def update_stage(stage):
     global ACTUAL_STAGE
     ACTUAL_STAGE = stage;
+    
+def reset_buttons():
+    global BUTTON_DIC
+    for button in BUTTON_DIC:
+        BUTTON_DIC[button].next_stage = 'happy_girl'
 #-------------------------------------------------------
 #
 #
@@ -143,10 +152,7 @@ while MAIN:
             finally:
                 MAIN = False
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == ord('w'):
-                ACTUAL_EVENT = 'happy_girl'
-            
+        if event.type == pygame.KEYDOWN:    
             if event.key == ord('q'):
                 pygame.quit()
             try:
@@ -157,7 +163,7 @@ while MAIN:
            
     
         button_tracker(ACTUAL_STAGE,event) 
-        
+    reset_buttons() 
     x, y = pygame.mouse.get_pos()
     print("(" + str(x) + "," + str(y) + ")")
     
