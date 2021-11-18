@@ -59,7 +59,7 @@ FPS = 30
 MAIN = True
 
 
-IMG_DIC = {'happy_girl':'IMG1.png','happy_girl_options':'OPT_IMG1.png', 'start_stage':'IMG2.png',}
+IMG_DIC = {'happy_girl':'IMG1.png','happy_girl_options':'OPT_IMG1.png','happy_girl_options2':'OPT_IMG3.png', 'start_stage':'IMG2.png',}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
@@ -131,13 +131,12 @@ def reset_buttons():
 #SETUP--------------------------------------------------
 start_stage = Stage('start_stage',None, 'start_button','happy_girl', (0,0),(300,300), ['start_button'])
 
-happy_girl = Stage('happy_girl','happy_girl_options' , 'button12','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
-
+happy_girl = Stage('happy_girl','happy_girl_options' , 'button12','happy_girl2' , (400,300),(100,100), ['button11','button21','button12','button22'])
+happy_girl2 = Stage('happy_girl','happy_girl_options2' , 'button11','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
 
 
 
 start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
-
 
 button11 = Button((400,300),(200,190),(20,20,200),'happy_girl')
 button21 = Button((400,490),(200,190),(20,20,200),'happy_girl')
@@ -146,7 +145,7 @@ button22 = Button((600,490),(200,190),(20,20,200),'happy_girl')
 
 
 ACTUAL_STAGE = 'start_stage'
-STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl }
+STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl, 'happy_girl2': happy_girl2 }
 BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button22}
 
 EVENT_MANAGER = Event_Manager(STAGE_DIC)
