@@ -27,10 +27,26 @@ class Event_Manager:
     def __init__(self, stage_dic):
         self.stage_dic = stage_dic   
         
+        
+    def startup_game(self):
+        global ACTUAL_STAGE
+        ACTUAL_STAGE = 'start_stage'
+        
+        
+    def main_game_control(self):
+        global ACTUAL_STAGE
+        self.run_event(ACTUAL_STAGE)
+        
+                
     def run_event(self, stage_tag):
+        
+        #set all button paths to the current stage and the set the correct button path to the next state
         for tag in STAGE_DIC[stage_tag].button_tag_list:
             BUTTON_DIC[tag].next_stage = stage_tag
         BUTTON_DIC[STAGE_DIC[stage_tag].right_option].next_stage = STAGE_DIC[stage_tag].right_option_path
+        
+        
+        #display event
         STAGE_DIC[stage_tag].display()      
 #-------------------------------------------------------
 #
@@ -43,7 +59,7 @@ FPS = 30
 MAIN = True
 
 
-IMG_DIC = {'happy_girl':'IMG1.png','options_square':'OPT_SQR.png', 'start_stage':'IMG2.png'}
+IMG_DIC = {'happy_girl':'IMG1.png','happy_girl_options':'OPT_IMG1.png', 'start_stage':'IMG2.png',}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
@@ -55,20 +71,20 @@ SCREEN_MANAGER= Screen_Manager(IMG_DIC)
 #
 #MULTY-INSTANCE CLASS DEFINITION------------------------
 class Stage:
-    def __init__(self, name, options_boolean, right_option, right_option_path, option_position, option_size, button_tag_list):
+    def __init__(self, name, options_tag, right_option, right_option_path, option_position, option_size, button_tag_list):
         self.name = name
-        self.options_boolean = options_boolean
         self.right_option = right_option
         self.option_position = option_position
         self.option_size = option_size
+        self.options_tag = options_tag
         self.button_tag_list = button_tag_list
         self.right_option_path = right_option_path
         
 
     def display(self):
         SCREEN_MANAGER.display(self.name, (0,0), RESOLUTION)
-        if self.options_boolean:
-            SCREEN_MANAGER.display('options_square', self.option_position, self.option_size)
+        if self.options_tag != None:
+            SCREEN_MANAGER.display(self.options_tag, self.option_position, self.option_size)
         
         
 class Button:
@@ -95,33 +111,6 @@ class Button:
 #
 #
 #
-#SETUP--------------------------------------------------
-start_stage = Stage('start_stage', False, 'start_button','happy_girl', (0,0),(300,300), ['start_button'])
-happy_girl = Stage('happy_girl', True, 'button11','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
-
-
-
-
-start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
-
-
-button11 = Button((400,300),(170,150),(20,20,200),'happy_girl')
-button21 = Button((400,450),(170,160),(20,20,200),'happy_girl')
-button12 = Button((570,300),(170,150),(20,20,200),'happy_girl')
-button22 = Button((570,450),(170,160),(20,20,200),'happy_girl')
-
-
-ACTUAL_STAGE = 'start_stage'
-STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl }
-BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button22}
-
-EVENT_MANAGER = Event_Manager(STAGE_DIC)
-clock = pygame.time.Clock()
-pygame.init()
-#-------------------------------------------------------
-#
-#
-#
 #AUXILIARY FUNCTIONS------------------------------------
 def button_tracker(stage, event):
     for tag in STAGE_DIC[stage].button_tag_list:
@@ -139,11 +128,41 @@ def reset_buttons():
 #
 #
 #
+#SETUP--------------------------------------------------
+start_stage = Stage('start_stage',None, 'start_button','happy_girl', (0,0),(300,300), ['start_button'])
+
+happy_girl = Stage('happy_girl','happy_girl_options' , 'button12','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
+
+
+
+
+start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
+
+
+button11 = Button((400,300),(200,190),(20,20,200),'happy_girl')
+button21 = Button((400,490),(200,190),(20,20,200),'happy_girl')
+button12 = Button((600,300),(200,190),(20,20,200),'happy_girl')
+button22 = Button((600,490),(200,190),(20,20,200),'happy_girl')
+
+
+ACTUAL_STAGE = 'start_stage'
+STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl }
+BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button22}
+
+EVENT_MANAGER = Event_Manager(STAGE_DIC)
+clock = pygame.time.Clock()
+pygame.init()
+
+EVENT_MANAGER.startup_game()
+#-------------------------------------------------------
+#
+#
+#
 #MAIN LOOP----------------------------------------------
 while MAIN:
     
-    EVENT_MANAGER.run_event(ACTUAL_STAGE) 
-    
+    EVENT_MANAGER.main_game_control()
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -164,6 +183,7 @@ while MAIN:
     
         button_tracker(ACTUAL_STAGE,event) 
     reset_buttons() 
+    
     x, y = pygame.mouse.get_pos()
     print("(" + str(x) + "," + str(y) + ")")
     
