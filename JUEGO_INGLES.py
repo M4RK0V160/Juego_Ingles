@@ -59,7 +59,7 @@ FPS = 30
 MAIN = True
 
 
-IMG_DIC = {'happy_girl':'IMG1.png','happy_girl_options':'OPT_IMG1.png','happy_girl_options2':'OPT_IMG3.png', 'start_stage':'IMG2.png',}
+IMG_DIC = {'happy_girl':'IMG1.png','happy_girl_options':'OPT_IMG1.png','happy_girl_options2':'OPT_IMG3.png', 'start_stage':'IMG2.png', 'emotions_square': 'OPT_SQR.png'}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
@@ -131,7 +131,7 @@ def reset_buttons():
 #SETUP--------------------------------------------------
 start_stage = Stage('start_stage',None, 'start_button','happy_girl', (0,0),(300,300), ['start_button'])
 
-happy_girl = Stage('happy_girl','happy_girl_options' , 'button12','happy_girl2' , (400,300),(100,100), ['button11','button21','button12','button22'])
+happy_girl = Stage('happy_girl','emotions_square' , 'button12','happy_girl2' , (400,300),(100,100), ['button11','button21','button12','button22'])
 happy_girl2 = Stage('happy_girl','happy_girl_options2' , 'button11','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
 
 
