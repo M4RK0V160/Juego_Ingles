@@ -123,16 +123,16 @@ def update_stage(stage):
 def reset_buttons():
     global BUTTON_DIC
     for button in BUTTON_DIC:
-        BUTTON_DIC[button].next_stage = 'happy_girl'
+        BUTTON_DIC[button].next_stage = 'happy_girlA'
 #-------------------------------------------------------
 #
 #
 #
 #SETUP--------------------------------------------------
-start_stage = Stage('start_stage',None, 'start_button','happy_girl', (0,0),(300,300), ['start_button'])
+start_stage = Stage('start_stage',None, 'start_button','happy_girlA', (0,0),(300,300), ['start_button'])
 
-happy_girlA = Stage('happy_girlA','emotions_square' , 'button12','happy_girlB' , (400,300),(100,100), ['button11','button21','button12','button22'])
-happy_girlB = Stage('happy_girlB','happy_girl_options' , 'button11','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
+happy_girlA = Stage('happy_girlA','emotions_square' , 'button11','happy_girlB' , (400,300),(100,100), ['button11','button21','button12','button22'])
+happy_girlB = Stage('happy_girlB','happy_girl_options' , 'button22','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
 
 
 
