@@ -1,8 +1,13 @@
 import pygame
 from pygame import *
 
+pygame.init()
+pygame.font.init()
+myfont = pygame.font.SysFont('Comic Sans MS', 30)
+
 import sys
 import os
+import time
 
 #SET WORKING DIRECTORY TO THE  FILE'S PATH IN THE CURRENT SYSTEM 
 os.chdir(os.path.dirname(__file__))
@@ -23,7 +28,7 @@ class Screen_Manager:
         SCREEN.blit(IMG, pygame.Rect(pos,size))
         
         
-class Event_Manager:
+class Stage_Manager:
     def __init__(self, stage_dic):
         self.stage_dic = stage_dic   
         
@@ -57,9 +62,9 @@ class Event_Manager:
 RESOLUTION = (800,700)
 FPS = 30
 MAIN = True
+DEV_MODE = False
 
-
-IMG_DIC = {'happy_girl':'IMG1.png','happy_girl_options':'OPT_IMG1.png','happy_girl_options2':'OPT_IMG3.png', 'start_stage':'IMG2.png', 'emotions_square': 'OPT_SQR.png'}
+IMG_DIC = {'welldone':'WIN_SCR.png','happy_girlA':'IMG1a.png','happy_girlB':'IMG1b.png','happy_girl_options':'OPT_IMG1.png', 'start_stage':'IMG2.png', 'emotions_square': 'OPT_SQR.png'}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
@@ -117,22 +122,38 @@ def button_tracker(stage, event):
         BUTTON_DIC[tag].click(event)
 
 def update_stage(stage):
-    global ACTUAL_STAGE
+    global ACTUAL_STAGE, NEXT_STAGE
     ACTUAL_STAGE = stage;
     
 def reset_buttons():
     global BUTTON_DIC
     for button in BUTTON_DIC:
-        BUTTON_DIC[button].next_stage = 'happy_girl'
+        BUTTON_DIC[button].next_stage = 'happy_girlA'
+        
+def Aux_Sceen_info():
+    global DEV_MODE, STAGE_DIC, ACTUAL_STAGE
+    if DEV_MODE:
+        stage_name = myfont.render(('STAGE_NAME:' + STAGE_DIC[ACTUAL_STAGE].name),True,(0,0,0))
+        stage_correct_option = myfont.render(('CORRECT_OPTION:' + STAGE_DIC[ACTUAL_STAGE].right_option),True,(0,0,0))
+        stage_next_path = myfont.render(('NEXT_STAGE:' + STAGE_DIC[ACTUAL_STAGE].right_option_path),True,(0,0,0))
+    
+        SCREEN.blit(stage_name,pygame.Rect((10,10),(100,20)))
+        SCREEN.blit(stage_correct_option,pygame.Rect((10,40),(100,20)))
+        SCREEN.blit(stage_next_path,pygame.Rect((10,70),(100,20)))
 #-------------------------------------------------------
 #
 #
 #
 #SETUP--------------------------------------------------
-start_stage = Stage('start_stage',None, 'start_button','happy_girl', (0,0),(300,300), ['start_button'])
+ACTUAL_STAGE = 'start_stage'
+NEXT_STAGE = 'start_screen'
 
-happy_girl = Stage('happy_girl','emotions_square' , 'button12','happy_girl2' , (400,300),(100,100), ['button11','button21','button12','button22'])
-happy_girl2 = Stage('happy_girl','happy_girl_options2' , 'button11','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
+start_stage = Stage('start_stage',None, 'start_button','happy_girlA', (0,0),(300,300), ['start_button'])
+
+happy_girlA = Stage('happy_girlA','emotions_square' , 'button11','welldone' , (400,300),(100,100), ['button11','button21','button12','button22'])
+welldone = Stage('welldone',None ,'start_button', 'happy_girlB' , (400,300),(100,100), ['start_button'])
+happy_girlB = Stage('happy_girlB','happy_girl_options' , 'button22','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
+
 
 
 
@@ -144,48 +165,46 @@ button12 = Button((600,300),(200,190),(20,20,200),'happy_girl')
 button22 = Button((600,490),(200,190),(20,20,200),'happy_girl')
 
 
-ACTUAL_STAGE = 'start_stage'
-STAGE_DIC = {'start_stage': start_stage,'happy_girl':happy_girl, 'happy_girl2': happy_girl2 }
+
+STAGE_DIC = {'start_stage': start_stage,'happy_girlA':happy_girlA, 'happy_girlB': happy_girlB, 'welldone': welldone}
 BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button22}
 
-EVENT_MANAGER = Event_Manager(STAGE_DIC)
+STAGE_MANAGER = Stage_Manager(STAGE_DIC)
 clock = pygame.time.Clock()
 pygame.init()
 
-EVENT_MANAGER.startup_game()
+STAGE_MANAGER.startup_game()
 #-------------------------------------------------------
 #
 #
 #
 #MAIN LOOP----------------------------------------------
 while MAIN:
-    
-    EVENT_MANAGER.main_game_control()
+   
+    STAGE_MANAGER.main_game_control()
 
     for event in pygame.event.get():
+        
+        if event.type == pygame.KEYDOWN:    
+            if event.key == ord('w'):
+                DEV_MODE = not DEV_MODE
+        
         if event.type == pygame.QUIT:
             pygame.quit()
             try:
+
                 sys.exit()
             finally:
                 MAIN = False
 
-        if event.type == pygame.KEYDOWN:    
-            if event.key == ord('q'):
-                pygame.quit()
-            try:
-                sys.exit()
-            finally:
-                MAIN = False
         
+            
            
-    
+        
         button_tracker(ACTUAL_STAGE,event) 
     reset_buttons() 
     
-    x, y = pygame.mouse.get_pos()
-    print("(" + str(x) + "," + str(y) + ")")
-    
+    Aux_Sceen_info()
     pygame.display.flip()  
     clock.tick(FPS)
 #-------------------------------------------------------
