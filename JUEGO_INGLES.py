@@ -1,6 +1,8 @@
 
 import subprocess
 import sys
+mport os
+import time
 
 def install(package):
     subprocess.call([sys.executable, "-m", "pip", "install", package])
@@ -15,9 +17,8 @@ pygame.init()
 pygame.font.init()
 myfont = pygame.font.SysFont('Comic Sans MS', 30)
 
-import sys
-import os
-import time
+
+
 
 
 #SET WORKING DIRECTORY TO THE  FILE'S PATH IN THE CURRENT SYSTEM 
