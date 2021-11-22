@@ -167,35 +167,35 @@ start_stage = Stage('start_stage',None, 'start_button','happy_girlA', (0,0),(300
 
 restart_stage = Stage('restart_stage',None, 'start_button','happy_girlA', (0,0),(300,300), ['start_button'])
 
-happy_girlA = Stage('happy_girlA','emotions_square' , 'button11','welldone1' , (400,300),(100,100), ['button11','button21','button12','button22'])
-welldone1 = Stage('welldone',None ,'start_button', 'happy_girlB' , (400,300),(100,100), ['start_button'])
-happy_girlB = Stage('happy_girlB','happy_girl_options' , 'button22','welldone2' , (400,300),(100,100), ['button11','button21','button12','button22'])
+happy_girlA = Stage('happy_girlA','emotions_square' , 'button11','welldone1' , (470,300),(100,100), ['button11','button21','button12','button22'])
+welldone1 = Stage('welldone',None ,'start_button', 'happy_girlB' , (470,300),(100,100), ['start_button'])
+happy_girlB = Stage('happy_girlB','happy_girl_options' , 'button22','welldone2' , (470,300),(100,100), ['button11','button21','button12','button22'])
 
-welldone2 = Stage('welldone',None ,'start_button', 'scared_boyA' , (400,300),(100,100), ['start_button'])
+welldone2 = Stage('welldone',None ,'start_button', 'scared_boyA' , (470,300),(100,100), ['start_button'])
 
-scared_boyA = Stage('scared_boyA','emotions_square' , 'button12','welldone3' , (400,300),(100,100), ['button11','button21','button12','button22'])
-welldone3 = Stage('welldone',None ,'start_button', 'scared_boyB' , (400,300),(100,100), ['start_button'])
-scared_boyB = Stage('scared_boyB','scared_boy_options' , 'button21','welldone4' , (400,300),(100,100), ['button11','button21','button12','button22'])
+scared_boyA = Stage('scared_boyA','emotions_square' , 'button12','welldone3' , (470,300),(100,100), ['button11','button21','button12','button22'])
+welldone3 = Stage('welldone',None ,'start_button', 'scared_boyB' , (470,300),(100,100), ['start_button'])
+scared_boyB = Stage('scared_boyB','scared_boy_options' , 'button21','welldone4' , (470,300),(100,100), ['button11','button21','button12','button22'])
 
-welldone4 = Stage('welldone',None ,'start_button', 'angry_boyA' , (400,300),(100,100), ['start_button'])
+welldone4 = Stage('welldone',None ,'start_button', 'angry_boyA' , (470,300),(100,100), ['start_button'])
 
-angry_boyA = Stage('angry_boyA','emotions_square' , 'button22','welldone5' , (400,300),(100,100), ['button11','button21','button12','button22'])
-welldone5 = Stage('welldone',None ,'start_button', 'angry_boyB' , (400,300),(100,100), ['start_button'])
-angry_boyB = Stage('angry_boyB','angry_boy_options' , 'button11','welldone6' , (400,300),(100,100), ['button11','button21','button12','button22'])
+angry_boyA = Stage('angry_boyA','emotions_square' , 'button22','welldone5' , (470,300),(100,100), ['button11','button21','button12','button22'])
+welldone5 = Stage('welldone',None ,'start_button', 'angry_boyB' , (470,300),(100,100), ['start_button'])
+angry_boyB = Stage('angry_boyB','angry_boy_options' , 'button11','welldone6' , (470,300),(100,100), ['button11','button21','button12','button22'])
 
-welldone6 = Stage('welldone',None ,'start_button', 'sad_girlA' , (400,300),(100,100), ['start_button'])
+welldone6 = Stage('welldone',None ,'start_button', 'sad_girlA' , (470,300),(100,100), ['start_button'])
 
-sad_girlA = Stage('sad_girlA','emotions_square' , 'button21','welldone7' , (400,300),(100,100), ['button11','button21','button12','button22'])
-welldone7 = Stage('welldone',None ,'start_button', 'sad_girlB' , (400,300),(100,100), ['start_button'])
-sad_girlB = Stage('sad_girlB','sad_girl_options' , 'button12','restart_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
+sad_girlA = Stage('sad_girlA','emotions_square' , 'button21','welldone7' , (470,300),(100,100), ['button11','button21','button12','button22'])
+welldone7 = Stage('welldone',None ,'start_button', 'sad_girlB' , (470,300),(100,100), ['start_button'])
+sad_girlB = Stage('sad_girlB','sad_girl_options' , 'button12','restart_stage' , (470,300),(100,100), ['button11','button21','button12','button22'])
 
 
 start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
 
-button11 = Button((400,300),(200,190),(20,20,200),'happy_girl')
-button21 = Button((400,490),(200,190),(20,20,200),'happy_girl')
-button12 = Button((600,300),(200,190),(20,20,200),'happy_girl')
-button22 = Button((600,490),(200,190),(20,20,200),'happy_girl')
+button11 = Button((470,300),(165,150),(20,20,200),'happy_girl')
+button21 = Button((470,450),(165,150),(20,20,200),'happy_girl')
+button12 = Button((635,300),(165,150),(20,20,200),'happy_girl')
+button22 = Button((635,450),(165,150),(20,20,200),'happy_girl')
 
 
 

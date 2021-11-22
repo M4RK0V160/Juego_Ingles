@@ -1,0 +1,273 @@
+[33mcommit 604b2f020fe44624fae9eecb2d3c266f09f7e421[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Mon Nov 22 09:46:50 2021 +0100
+
+    added pygame module auto install
+
+[33mcommit 6ec09203df03b16e5b8e98318a49cc84ced3606e[m[33m ([m[1;33mtag: V_1.0[m[33m)[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Mon Nov 22 09:31:36 2021 +0100
+
+    V.1.0 added all stages and images to de dictionaries, working out button sizes and placement
+
+[33mcommit eff3e4ae4e279e66d0ba9ef9fe948316aabbb8be[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Sun Nov 21 18:50:07 2021 +0100
+
+    Diagrama de flujo
+
+[33mcommit ba189b99589393dcbb069acdfcd2d51aa0ad9933[m
+Merge: b68cb28 56eb1d4
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Sun Nov 21 18:48:07 2021 +0100
+
+    fixing merge
+
+[33mcommit b68cb2887a8c2ad82be2a01f3f3f51ef15a697bc[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Sun Nov 21 18:38:26 2021 +0100
+
+    últimas imágenes
+
+[33mcommit 56eb1d40411fda5faacd27de56ce831502a3fe46[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Fri Nov 19 12:00:16 2021 +0100
+
+    revised stage transitions, added WellDone Screen, i have decided that the timeline will be linear
+
+[33mcommit 83c1604dbf17918eef133e7afe5fcd3c5e638353[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Fri Nov 19 09:17:29 2021 +0100
+
+    stage Nomenclature Updated
+
+[33mcommit eb47cd185555ad3fe4ef5914cb2e8f714cfdd7b5[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Fri Nov 19 09:14:51 2021 +0100
+
+    working on stage transition functionality
+
+[33mcommit d0f9ac0035fcbfbbc909d66e4a1aa54adea82898[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Fri Nov 19 09:11:32 2021 +0100
+
+    a
+
+[33mcommit d403941b7bdbb84bccf073017bbd36d4e481e6d7[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Thu Nov 18 20:34:31 2021 +0100
+
+    New pictures
+
+[33mcommit 2c9f97bb05b04839fcdcf7ff607395dca98bcb67[m
+Author: JuanLinage <linagegracia.juan@gmail.com>
+Date:   Thu Nov 18 11:16:53 2021 +0100
+
+    Titulo del juego y primer borrador del lore
+
+[33mcommit 3aaaa54f1a6ce29f379fa238ed7fd4ed156db0d7[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Thu Nov 18 10:28:34 2021 +0100
+
+    first Situation almost ready for review, just missing the 2nd background image and a optsqr resizing
+
+[33mcommit 820c330916c679016141e6bdb0a428f0dfde828a[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Thu Nov 18 10:23:23 2021 +0100
+
+    current configurtion: test for 2 consecutive stage transitions
+
+[33mcommit ea45c2d44689385d20a59dc4291f5760b11371f9[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Thu Nov 18 10:17:15 2021 +0100
+
+    cleaned up the buttons code and the stage code, ready to implement stage transition functionality
+
+[33mcommit 07bf7e67b3bf5c88b67f27a3ca6c2132fa0f4d2d[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Thu Nov 18 09:33:43 2021 +0100
+
+    New pictures
+
+[33mcommit 2519fcda8bffe299145466a2d0f213244ed6281c[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 14:34:23 2021 +0100
+
+    okay ahora funcionan los botones, 100% real no fake
+
+[33mcommit d687b02a1f3e3e64e4e978882a20a0fab6c0fc58[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 14:19:55 2021 +0100
+
+    lalalallala
+
+[33mcommit 44d4bf629c1848f360671d7943ae31e9b82e1a41[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 14:17:54 2021 +0100
+
+    okay now they are properly working, there is 1 start button nd 4 in the options pad
+
+[33mcommit f2a9ad1409cea85eaa41d48fa85478119c16c29a[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 14:07:59 2021 +0100
+
+    los botones de las opciones ahora resetean su destino al final de cada iteracion del Main loop, y el event manager lo settea al principio
+
+[33mcommit 333785c058ef4ed51fa716408e742b793ab89090[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 13:54:35 2021 +0100
+
+    actual button functionality this time for real no fake
+
+[33mcommit a767e77605e9417ef431d2fa26117f2384c97399[m
+Merge: bf3234c 6f0b463
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 13:22:15 2021 +0100
+
+    okay?
+
+[33mcommit bf3234c91c3a7bf7fc76ca1d45ae8155ef618a86[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 13:21:05 2021 +0100
+
+    button functionality actually OK, and working
+
+[33mcommit 6f0b4630168c82d7b06b1bf379cfb5296a65f05b[m
+Merge: 96f5564 18b2f1f
+Author: JuanLinage <linagegracia.juan@gmail.com>
+Date:   Wed Nov 17 13:10:10 2021 +0100
+
+    La Rama del Juanito
+    Merge remote-tracking branch 'origin'
+
+[33mcommit 18b2f1fc78f576a466b03bb1c1e80f21c968530d[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 12:41:59 2021 +0100
+
+    buttons working
+
+[33mcommit eac3a8b159ae365c4832b0001794218928871d42[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Wed Nov 17 12:40:48 2021 +0100
+
+    Reescalate OPT_SQR
+
+[33mcommit 67fad78dc79749d1cec228e23abb57004d7e8978[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Wed Nov 17 12:34:17 2021 +0100
+
+    Reescalate IMG2
+
+[33mcommit 19c0ef0706970a043e8cb07037ab8f382f595c01[m
+Merge: 17139c7 e56d155
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Wed Nov 17 12:22:17 2021 +0100
+
+    Merge branch 'main' of https://github.com/M4RK0V160/Juego_Ingles
+
+[33mcommit 96f55644d20670f3349964161bbbde64a20f6c5c[m
+Author: JuanLinage <linagegracia.juan@gmail.com>
+Date:   Wed Nov 17 12:21:49 2021 +0100
+
+    CSS_Juan
+
+[33mcommit 17139c7115ad0dc14d224b385e234a57b50e4716[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Wed Nov 17 12:21:44 2021 +0100
+
+    Start Screen file name change
+
+[33mcommit e56d1554db95c83605326dc9f39768bd21d19bdf[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 12:21:15 2021 +0100
+
+    added Start_screen IMG
+
+[33mcommit f47553377c37435880bb6a6b0561057307f1899f[m
+Merge: c72f35c be68380
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Wed Nov 17 12:18:07 2021 +0100
+
+    Merge branch 'main' of https://github.com/M4RK0V160/Juego_Ingles
+
+[33mcommit be6838065ef03bd22544bcdc501187c049ec081c[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 12:17:40 2021 +0100
+
+    testin b
+
+[33mcommit c72f35c4334683c18fd2217451b8fefa618f74fa[m
+Author: Germán <alejandro.palencia2@live.u-tad.com>
+Date:   Wed Nov 17 12:17:38 2021 +0100
+
+    Start Screen picture
+
+[33mcommit d94c10a790e6389c32dfb30c5fcb0f0728da62e9[m
+Merge: fd495dc 3d7305f
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 12:09:44 2021 +0100
+
+    botoneeees
+
+[33mcommit fd495dc10a2645829fb0d63363ddcfefc2fef01b[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 12:07:19 2021 +0100
+
+    added button class testing OPT_SQR display functionality
+
+[33mcommit e875d8f9f5c2750252136ff6940028f5065e9671[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 11:59:50 2021 +0100
+
+    GITHUB = LOCAL GIT
+
+[33mcommit 3d7305ff2de8ea401886e2d4b3b8527e82eefdbd[m
+Merge: 71d33cd 9da02a8
+Author: M4RK0V160 <86568836+M4RK0V160@users.noreply.github.com>
+Date:   Wed Nov 17 11:54:32 2021 +0100
+
+    Merge pull request #1 from GermanPalencia1/patch-1
+    
+    Delete OPT_SCARED.png
+
+[33mcommit 9da02a8ce11b0f0231728c2743b0170cf9d15f01[m
+Author: GermanPalencia1 <91313889+GermanPalencia1@users.noreply.github.com>
+Date:   Wed Nov 17 11:53:36 2021 +0100
+
+    Delete OPT_SCARED.png
+
+[33mcommit 71d33cd4518292cea005dddd21fc9dcbc1eafd06[m
+Author: M4RK0V160 <86568836+M4RK0V160@users.noreply.github.com>
+Date:   Wed Nov 17 11:53:20 2021 +0100
+
+    Delete OPT_SAD.png
+
+[33mcommit f1ba65d1c4755e710c6d45dcc91ad26610fe3447[m
+Author: M4RK0V160 <86568836+M4RK0V160@users.noreply.github.com>
+Date:   Wed Nov 17 11:53:10 2021 +0100
+
+    Delete OPT_HAPPY.png
+
+[33mcommit 04993c726dbfb6a29407087e6b75c857417f5b71[m
+Author: M4RK0V160 <86568836+M4RK0V160@users.noreply.github.com>
+Date:   Wed Nov 17 11:51:58 2021 +0100
+
+    Delete OPT_ANGRY.png
+
+[33mcommit f2a623e413ffc95ef78f3cef555ffa544f7b6470[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 11:49:05 2021 +0100
+
+    added opt_sqr
+
+[33mcommit fab461f4e5b6124e45b45390d152ed83d32089c1[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 11:45:17 2021 +0100
+
+    not much to add
+
+[33mcommit 31fe5a271d285a22e3086e95c35ceb05e0a562b0[m
+Author: marco <marcojobmail1600@gmail.com>
+Date:   Wed Nov 17 11:40:13 2021 +0100
+
+    Primera Version, Screen Manager Done
