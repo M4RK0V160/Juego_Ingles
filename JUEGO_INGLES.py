@@ -1,3 +1,13 @@
+
+import subprocess
+import sys
+
+def install(package):
+    subprocess.call([sys.executable, "-m", "pip", "install", package])
+    
+install('pygame')
+
+
 import pygame
 from pygame import *
 
@@ -8,6 +18,7 @@ myfont = pygame.font.SysFont('Comic Sans MS', 30)
 import sys
 import os
 import time
+
 
 #SET WORKING DIRECTORY TO THE  FILE'S PATH IN THE CURRENT SYSTEM 
 os.chdir(os.path.dirname(__file__))
@@ -64,9 +75,11 @@ FPS = 30
 MAIN = True
 DEV_MODE = False
 
-IMG_DIC = {'start_stage':'IMG2.png','restart_stage': 'IMG2b.png','emotions_square': 'OPT_SQR.png','welldone':'WELL_DONE.png','happy_girlA':'IMG1a.png',
-           'happy_girlB':'IMG1b.png','happy_girl_options':'OPT_IMG1.png','scared_boyA':'IMG3a.png','scared_boyB':'IMG3b.png','scared_boy_options':'OPT_IMG3.png',
-           'angry_boyA':'IMG4a.png','angry_boyB':'IMG4b.png','angry_boy_options':'OPT_IMG4.png','sad_girlA':'IMG5a.png', 'sad_girlB':'IMG5b.png','sad_girl_options':'OPT_IMG5.png'}
+IMG_DIC = {'start_stage':'IMG2.png','restart_stage': 'IMG2b.png','emotions_square': 'OPT_SQR.png','welldone':'WELL_DONE.png',
+           'happy_girlA':'IMG1a.png','happy_girlB':'IMG1b.png','happy_girl_options':'OPT_IMG1.png','scared_boyA':'IMG3a.png',
+           'scared_boyB':'IMG3b.png','scared_boy_options':'OPT_IMG3.png','angry_boyA':'IMG4a.png','angry_boyB':'IMG4b.png',
+           'angry_boy_options':'OPT_IMG4.png','sad_girlA':'IMG5a.png', 'sad_girlB':'IMG5b.png','sad_girl_options':'OPT_IMG5.png'
+           }
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
