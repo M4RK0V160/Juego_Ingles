@@ -64,7 +64,9 @@ FPS = 30
 MAIN = True
 DEV_MODE = False
 
-IMG_DIC = {'welldone':'WIN_SCR.png','happy_girlA':'IMG1a.png','happy_girlB':'IMG1b.png','happy_girl_options':'OPT_IMG1.png', 'start_stage':'IMG2.png', 'emotions_square': 'OPT_SQR.png'}
+IMG_DIC = {'start_stage':'IMG2.png','restart_stage': 'IMG2b.png','emotions_square': 'OPT_SQR.png','welldone':'WELL_DONE.png','happy_girlA':'IMG1a.png',
+           'happy_girlB':'IMG1b.png','happy_girl_options':'OPT_IMG1.png','scared_boyA':'IMG3a.png','scared_boyB':'IMG3b.png','scared_boy_options':'OPT_IMG3.png',
+           'angry_boyA':'IMG4a.png','angry_boyB':'IMG4b.png','angry_boy_options':'OPT_IMG4.png','sad_girlA':'IMG5a.png', 'sad_girlB':'IMG5b.png','sad_girl_options':'OPT_IMG5.png'}
 
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
@@ -150,11 +152,29 @@ NEXT_STAGE = 'start_screen'
 
 start_stage = Stage('start_stage',None, 'start_button','happy_girlA', (0,0),(300,300), ['start_button'])
 
-happy_girlA = Stage('happy_girlA','emotions_square' , 'button11','welldone' , (400,300),(100,100), ['button11','button21','button12','button22'])
-welldone = Stage('welldone',None ,'start_button', 'happy_girlB' , (400,300),(100,100), ['start_button'])
-happy_girlB = Stage('happy_girlB','happy_girl_options' , 'button22','start_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
+restart_stage = Stage('restart_stage',None, 'start_button','happy_girlA', (0,0),(300,300), ['start_button'])
 
+happy_girlA = Stage('happy_girlA','emotions_square' , 'button11','welldone1' , (400,300),(100,100), ['button11','button21','button12','button22'])
+welldone1 = Stage('welldone',None ,'start_button', 'happy_girlB' , (400,300),(100,100), ['start_button'])
+happy_girlB = Stage('happy_girlB','happy_girl_options' , 'button22','welldone2' , (400,300),(100,100), ['button11','button21','button12','button22'])
 
+welldone2 = Stage('welldone',None ,'start_button', 'scared_boyA' , (400,300),(100,100), ['start_button'])
+
+scared_boyA = Stage('scared_boyA','emotions_square' , 'button12','welldone3' , (400,300),(100,100), ['button11','button21','button12','button22'])
+welldone3 = Stage('welldone',None ,'start_button', 'scared_boyB' , (400,300),(100,100), ['start_button'])
+scared_boyB = Stage('scared_boyB','scared_boy_options' , 'button21','welldone4' , (400,300),(100,100), ['button11','button21','button12','button22'])
+
+welldone4 = Stage('welldone',None ,'start_button', 'angry_boyA' , (400,300),(100,100), ['start_button'])
+
+angry_boyA = Stage('angry_boyA','emotions_square' , 'button22','welldone5' , (400,300),(100,100), ['button11','button21','button12','button22'])
+welldone5 = Stage('welldone',None ,'start_button', 'angry_boyB' , (400,300),(100,100), ['start_button'])
+angry_boyB = Stage('angry_boyB','angry_boy_options' , 'button11','welldone6' , (400,300),(100,100), ['button11','button21','button12','button22'])
+
+welldone6 = Stage('welldone',None ,'start_button', 'sad_girlA' , (400,300),(100,100), ['start_button'])
+
+sad_girlA = Stage('sad_girlA','emotions_square' , 'button21','welldone7' , (400,300),(100,100), ['button11','button21','button12','button22'])
+welldone7 = Stage('welldone',None ,'start_button', 'sad_girlB' , (400,300),(100,100), ['start_button'])
+sad_girlB = Stage('sad_girlB','sad_girl_options' , 'button12','restart_stage' , (400,300),(100,100), ['button11','button21','button12','button22'])
 
 
 start_button = Button((185,365),(400,200),(20,20,200),'happy_girl')
@@ -166,7 +186,14 @@ button22 = Button((600,490),(200,190),(20,20,200),'happy_girl')
 
 
 
-STAGE_DIC = {'start_stage': start_stage,'happy_girlA':happy_girlA, 'happy_girlB': happy_girlB, 'welldone': welldone}
+STAGE_DIC = {'start_stage': start_stage,'restart_stage':restart_stage,
+             'welldone1': welldone1,'welldone2': welldone2,'welldone3': welldone3,'welldone4': welldone4,'welldone5': welldone5,'welldone6': welldone6,'welldone7': welldone7,
+             'happy_girlA':happy_girlA, 'happy_girlB': happy_girlB,
+             'scared_boyA':scared_boyA, 'scared_boyB': scared_boyB,
+             'angry_boyA':angry_boyA, 'angry_boyB': angry_boyB,
+             'sad_girlA':sad_girlA, 'sad_girlB': sad_girlB,
+             
+             }
 BUTTON_DIC = {'start_button':start_button,'button11':button11,'button21':button21,'button12':button12,'button22':button22}
 
 STAGE_MANAGER = Stage_Manager(STAGE_DIC)
