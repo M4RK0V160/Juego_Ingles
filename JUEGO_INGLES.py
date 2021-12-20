@@ -1,23 +1,26 @@
 
 import subprocess
 import sys
-mport os
+import os
 import time
 
 def install(package):
     subprocess.call([sys.executable, "-m", "pip", "install", package])
     
 install('pygame')
+install('playsound')
 
 
 import pygame
 from pygame import *
 
+import playsound
+from playsound import *
+
 pygame.init()
 pygame.font.init()
 myfont = pygame.font.SysFont('Comic Sans MS', 30)
-
-
+pygame.mixer.init()
 
 
 
@@ -38,8 +41,9 @@ class Screen_Manager:
     def display(self, img_tag, pos, size):
         IMG  = pygame.image.load(self.img_dic[img_tag])
         SCREEN.blit(IMG, pygame.Rect(pos,size))
-        
-        
+
+
+
 class Stage_Manager:
     def __init__(self, stage_dic):
         self.stage_dic = stage_dic   
@@ -82,6 +86,43 @@ IMG_DIC = {'start_stage':'IMG2.png','restart_stage': 'IMG2b.png','emotions_squar
            'angry_boy_options':'OPT_IMG4.png','sad_girlA':'IMG5a.png', 'sad_girlB':'IMG5b.png','sad_girl_options':'OPT_IMG5.png'
            }
 
+SND_DIC = { 'Accompany_Jaime':pygame.mixer.Sound('Sonido/Accompany_Jaime.mp3'),
+            'Ana_is_sad':pygame.mixer.Sound('Sonido/Ana_is_sad.mp3'),
+            'Angry':pygame.mixer.Sound('Sonido/Angry.mp3'),
+            'Ask_maria_to_play_together':pygame.mixer.Sound('Sonido/Ask_maria_to_play_together.mp3'),
+            'Dress_up_as_a_ghost':pygame.mixer.Sound('Sonido/Dress_up_as_a_ghost.mp3'),
+            'Fat_a_bowl_of_pasta':pygame.mixer.Sound('Sonido/Fat_a_bowl_of_pasta.mp3'),
+            'Give_her_a_Stone':pygame.mixer.Sound('Sonido/Give_her_a_Stone.mp3'),
+            'Happy':pygame.mixer.Sound('Sonido/Happy.mp3'),
+            'Help_dry_his_tshirt':pygame.mixer.Sound('Sonido/Help_dry_his_tshirt.mp3'),
+            'How_is_ana_feeling':pygame.mixer.Sound('Sonido/How_is_ana_feeling.mp3'),
+            'How_is_Jaime_feeling':pygame.mixer.Sound('Sonido/How_is_Jaime_feeling.mp3'),
+            'How_is_Maria_feeling':pygame.mixer.Sound('Sonido/How_is_Maria_feeling.mp3'),
+            'How_is_tom_feeling':pygame.mixer.Sound('Sonido/How_is_tom_feeling.mp3'),
+            'Ignore_ana':pygame.mixer.Sound('Sonido/Ignore_ana.mp3'),
+            'Ignore_Jaime':pygame.mixer.Sound('Sonido/Ignore_Jaime.mp3'),
+            'Ignore_Maria':pygame.mixer.Sound('Sonido/Ignore_Maria.mp3'),
+            'Ignore_Tom':pygame.mixer.Sound('Sonido/Ignore_Tom.mp3'),
+            'jaime_is_scared(ghost)':pygame.mixer.Sound('Sonido/jaime_is_scared(ghost).mp3'),
+            'Laugh_at_Jaime':pygame.mixer.Sound('Sonido/Laugh_at_Jaime.mp3'),
+            'Maria_football':pygame.mixer.Sound('Sonido/Maria_football.mp3'),
+            'Not_correct':pygame.mixer.Sound('Sonido/Not_correct.mp3'),
+            'Put_on_a_band_aid':pygame.mixer.Sound('Sonido/Put_on_a_band_aid.mp3'),
+            'Run_around_ana':pygame.mixer.Sound('Sonido/Run_around_ana.mp3'),
+            'Sad':pygame.mixer.Sound('Sonido/Sad.mp3'),
+            'Scared':pygame.mixer.Sound('Sonido/Scared.mp3'),
+            'Take_the_ball_away':pygame.mixer.Sound('Sonido/Take_the_ball_away.mp3'),
+            'Throw_mud_onto_his_t-shirt':pygame.mixer.Sound('Sonido/Throw_mud_onto_his_t-shirt.mp3'),
+            'Throw_water_at_him':pygame.mixer.Sound('Sonido/Throw_water_at_him.mp3'),
+            'Tom_is_angry':pygame.mixer.Sound('Sonido/Tom_is_angry.mp3'),
+            'Try_again':pygame.mixer.Sound('Sonido/Try_again.mp3'),
+            'Well_done':pygame.mixer.Sound('Sonido/Well_done.mp3'),
+            'Well_done_frase_final':pygame.mixer.Sound('Sonido/Well_done_frase_final.mp3'),
+            'you_can_do_better':pygame.mixer.Sound('Sonido/you_can_do_better.mp3'),
+
+           }
+
+
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
 SCREEN_MANAGER= Screen_Manager(IMG_DIC)
@@ -122,12 +163,16 @@ class Button:
         SCREEN.blit(self.surface, (self.x, self.y))
  
     def click(self, event):
+        global SND_DIC
         x, y = pygame.mouse.get_pos()
+        if self.rect.collidepoint(x, y):
+            SND_DIC['Accompany_Jaime'].play()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pressed()[0]:
                 if self.rect.collidepoint(x, y):
                     update_stage(self.next_stage)
                     self.show()
+        
 #-------------------------------------------------------
 #
 #
