@@ -103,7 +103,7 @@ SND_DIC = { 'Accompany_Jaime':pygame.mixer.Sound('Sonido/Accompany_Jaime.mp3'),
             'Ignore_Jaime':pygame.mixer.Sound('Sonido/Ignore_Jaime.mp3'),
             'Ignore_Maria':pygame.mixer.Sound('Sonido/Ignore_Maria.mp3'),
             'Ignore_Tom':pygame.mixer.Sound('Sonido/Ignore_Tom.mp3'),
-            'jaime_is_scared(ghost)':pygame.mixer.Sound('Sonido/jaime_is_scared(ghost).mp3'),
+            'Jaime_is_scared(ghost)':pygame.mixer.Sound('Sonido/Jaime_is_scared(ghost).mp3'),
             'Laugh_at_Jaime':pygame.mixer.Sound('Sonido/Laugh_at_Jaime.mp3'),
             'Maria_football':pygame.mixer.Sound('Sonido/Maria_football.mp3'),
             'Not_correct':pygame.mixer.Sound('Sonido/Not_correct.mp3'),
@@ -119,7 +119,6 @@ SND_DIC = { 'Accompany_Jaime':pygame.mixer.Sound('Sonido/Accompany_Jaime.mp3'),
             'Well_done':pygame.mixer.Sound('Sonido/Well_done.mp3'),
             'Well_done_frase_final':pygame.mixer.Sound('Sonido/Well_done_frase_final.mp3'),
             'you_can_do_better':pygame.mixer.Sound('Sonido/you_can_do_better.mp3'),
-
            }
 
 
