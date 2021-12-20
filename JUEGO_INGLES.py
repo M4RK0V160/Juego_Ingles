@@ -22,6 +22,7 @@ pygame.font.init()
 myfont = pygame.font.SysFont('Comic Sans MS', 30)
 pygame.mixer.init()
 
+SOUND_CHANNEL = pygame.mixer.Channel(1)
 
 
 #SET WORKING DIRECTORY TO THE  FILE'S PATH IN THE CURRENT SYSTEM 
@@ -41,6 +42,22 @@ class Screen_Manager:
     def display(self, img_tag, pos, size):
         IMG  = pygame.image.load(self.img_dic[img_tag])
         SCREEN.blit(IMG, pygame.Rect(pos,size))
+
+
+
+class Sound_Manager:
+    def __init__(self, snd_dic, channel):
+        self.snd_dic = snd_dic
+        self.channel = channel
+        self.playing = False
+
+    def play(self, sound):
+        if not self.playing:
+            self.playing = True
+            
+            self.channel.queue(self.snd_dic[sound])
+            self.playing = False
+
 
 
 
@@ -125,7 +142,7 @@ SND_DIC = { 'Accompany_Jaime':pygame.mixer.Sound('Sonido/Accompany_Jaime.mp3'),
 SCREEN = pygame.display.set_mode([RESOLUTION[0],RESOLUTION[1]])
 SCREENBOX = SCREEN.get_rect()
 SCREEN_MANAGER= Screen_Manager(IMG_DIC)
-
+SOUND_MANAGER = Sound_Manager(SND_DIC, SOUND_CHANNEL)
 #-------------------------------------------------------
 #
 #
@@ -162,10 +179,10 @@ class Button:
         SCREEN.blit(self.surface, (self.x, self.y))
  
     def click(self, event):
-        global SND_DIC
+        global SND_DIC, SOUND_MANAGER
         x, y = pygame.mouse.get_pos()
         if self.rect.collidepoint(x, y):
-            SND_DIC['Accompany_Jaime'].play()
+            SOUND_MANAGER.play('Sad')
         if event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pressed()[0]:
                 if self.rect.collidepoint(x, y):
